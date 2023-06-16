@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Header } from "../../components/header";
 import { Input } from "../../components/input";
 
@@ -10,6 +10,24 @@ export function Networks() {
   const [instagram, setInstagram] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [youtube, setYoutube] = useState("");
+
+  function loadLinks() {
+    const docRef = doc(db, "social", "link");
+    getDoc(docRef).then((snapshot) => {
+      if (snapshot.data() !== undefined) {
+        setFacebook(snapshot.data()?.facebook);
+        setWhatsapp(snapshot.data()?.whatsapp);
+        setInstagram(snapshot.data()?.youtube);
+        setYoutube(snapshot.data()?.instagram);
+      }
+    });
+  }
+  useEffect(() => {
+    loadLinks();
+    return () => {
+      loadLinks();
+    };
+  }, []);
 
   function handleRegister(e: FormEvent) {
     e.preventDefault();
