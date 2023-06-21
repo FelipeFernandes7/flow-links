@@ -13,6 +13,7 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 interface LinkProps {
   id: string;
@@ -70,7 +71,7 @@ export function Admin() {
         setNameInput("");
         setUrl("");
         console.log("cadastrado com sucesso");
-        alert("cadastrado com sucesso");
+        toast.success("cadastrado com sucesso", { position: "bottom-center" });
       })
       .catch((error) => {
         alert(error.message);
