@@ -4,6 +4,7 @@ import { Input } from "../../components/input";
 
 import { db } from "../../services/firebaseConnection";
 import { setDoc, doc, getDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 export function Networks() {
   const [facebook, setFacebook] = useState("");
@@ -38,7 +39,7 @@ export function Networks() {
       youtube: youtube,
     })
       .then(() => {
-        alert("Salvo com sucesso!");
+        toast.success("Salvo com sucesso!", { position: "top-center" });
       })
       .then((error) => [console.log(error)]);
   }
@@ -91,7 +92,7 @@ export function Networks() {
         />
         <button
           type="submit"
-          className=" mt-4 h-10 bg-gradient-to-r from-blue-600 to-violet-500 
+          className="md:h-12 mt-4 h-12 bg-gradient-to-r from-blue-600 to-violet-500 
           rounded border-0 text-lg font-medium text-white transition-all active:scale-95"
         >
           Salvar Links

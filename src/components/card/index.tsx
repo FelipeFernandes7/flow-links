@@ -16,7 +16,7 @@ export function Card({ name, color, background, onClick }: CardProps) {
       <p>{name}</p>
       <div>
         <button
-          className="border border-dashed py-1 p-1 rounded"
+          className="border border-dashed py-1 p-1 rounded transition-all active:scale-95"
           onClick={onClick}
         >
           {<FiTrash size={18} color={"#fff"} />}

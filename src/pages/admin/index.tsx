@@ -150,13 +150,15 @@ export function Admin() {
         )}
         <button
           type="submit"
-          className=" mt-4 h-10 bg-gradient-to-r from-blue-600 to-violet-500 
+          className="md:h-12 mt-4 h-12 bg-gradient-to-r from-blue-600 to-violet-500 
           rounded border-0 text-lg font-medium text-white transition-all active:scale-95"
         >
           Cadastrar Link
         </button>
       </form>
-      <h2 className="font-bold text-white mt-4 mb-4 text-2xl">Meus Links</h2>
+      <h2 className="font-bold text-white mt-4 mb-4 text-2xl">
+        Links Cadastrados
+      </h2>
       {links.map((item) => (
         <Card
           key={item.id}
@@ -166,6 +168,11 @@ export function Admin() {
           onClick={() => handleDeleteLink(item.id)}
         />
       ))}
+      {links.length > 0 && (
+        <span className="text-center font-medium text-lg text-orange-50 mt-2">
+          Obs: estes são os links que estarão visíveis na home
+        </span>
+      )}
     </div>
   );
 }
